@@ -1,0 +1,21 @@
+<h1>LGA Results</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% if selected_lga %}
+<h2>Results for {{ selected_lga }}</h2>
+<table>
+    <tr>
+        <th>Party Abbreviation</th>
+        <th>Party Score</th>
+    </tr>
+    {% for result in results %}
+    <tr>
+        <td>{{ result.0 }}</td>
+        <td>{{ result.1 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
